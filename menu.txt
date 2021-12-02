@@ -1,0 +1,15 @@
+Modelo do menu ->
+[1]Login 
+[0]Sair
+login vai percorrer um documento, se o doc estiver
+vazio, ele vai pedir pra cadastrar um login e uma
+senha e pedir pra logar novamente após o cadastro
+quando logar, aparecerá outro menu:
+[1]Ver a lista de sessões
+(Que também aparecerá como um menu e o usuário pode
+ver os produtos de determinada lista)
+[2]Mostrar todos os produtos
+[3]cadastrar novo produto 
+[4]Mostrar quantos produtos tem em estoque
+[5]Mostrar quantos produtos estão em falta
+[0]Sair
