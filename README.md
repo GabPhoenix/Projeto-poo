@@ -15,6 +15,7 @@
     </div>
 </div>
 <div align="center">
+    <br>
     <p>Projeto de loja comercial de utilidades, utilizando o java(terminal).
     A loja permite realizar a venda e orçamento de produtos, mas sempre que encerrar o programa, a quantidade em estoque será a mesma de anteriormente, pois, o objetivo do projeto é demostrar os conhecimentos em programação orientada a objetos e não realizar aplicações mais complexas com conexão com banco de dados ou interface gráfica;
     </p>
