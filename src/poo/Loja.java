@@ -1,14 +1,12 @@
 package poo;
 
-public abstract class Loja implements Util{
+public class Loja implements Util{
     Cliente cliente;
-    Carrinho carrinho;
     private int id;
 
-    public Loja(Cliente cliente, int id, Carrinho carrinho){
+    public Loja(Cliente cliente, int id){
         this.id = id;
         this.cliente = cliente;
-		this.carrinho = carrinho;
     }
 
     public int getId(){
@@ -27,12 +25,5 @@ public abstract class Loja implements Util{
 		this.cliente = cliente;
 	}
 
-	public Carrinho getCarrinho() {
-		return carrinho;
-	}
-
-	public void setCarrinho(Carrinho carrinho) {
-		this.carrinho = carrinho;
-	}
 
 }

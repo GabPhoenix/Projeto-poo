@@ -1,7 +1,7 @@
 package poo;
 
 public class Produtos {
-    private String nomeDoProduto;
+	private String nomeDoProduto;
 	private double preco;
 	private int quantidade;
 	
@@ -34,5 +34,4 @@ public class Produtos {
 	public void setQuantidade(int quantidade) {
 		this.quantidade = quantidade;
 	}
-	
 }

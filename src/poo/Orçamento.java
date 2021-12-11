@@ -1,16 +1,22 @@
 package poo;
 
+import java.util.ArrayList;
+
 public class Orçamento extends Loja{
+	private ArrayList<Produtos> prods;
 
-    public Orçamento(Cliente cliente, int id, Carrinho carrinho) {
-		super(cliente, id, carrinho);
+	public Orçamento(Cliente cliente, int id, ArrayList<Produtos> prods) {
+		super(cliente, id);
+		this.prods = prods;
 	}
 
-    // método toString para retornar os dados do orçamento
-	@Override
-	public String toString() {
-		return "Vendas [carrinho=" + carrinho + ", getCliente()=" + getCliente() + ", getCarrinho()=" + getCarrinho()
-				+ ", getId()=" + getId() + ", getClass()=" + getClass() + ", hashCode()=" + hashCode() + ", toString()="
-				+ super.toString() + "]";
+	public ArrayList<Produtos> getProds() {
+		return prods;
 	}
+
+	public void setProds(ArrayList<Produtos> prods) {
+		this.prods = prods;
+	}
+	
+	
 }
