@@ -1,6 +1,3 @@
-// IFPE - GARANHUNS (ADS) 
-// GABRIEL CARVALHO
-// ISABEL PEREIRA
 package poo;
 
 import java.util.ArrayList;
@@ -8,7 +5,8 @@ import java.util.Scanner;
 
 public class App {
 
-	public static void main(String[] args) {
+	@SuppressWarnings("resource")
+	public static void main(String[] args) throws LoginErradoException, ProdutoNaoExisteExcption {
 		  Scanner sc = new Scanner(System.in);
 	        ArrayList<Loja> loja = new ArrayList<Loja>();
 	        ArrayList<Produtos> produtos = new ArrayList<Produtos>();
@@ -32,11 +30,11 @@ public class App {
 	        produtos.add(new Produtos("Carregador Portátil", 60.00, 8));
 	        
 	        // Variáveis
-            @SuppressWarnings("unused")
-	        String nomeCliente, cpf, nomeDoProduto;
-            @SuppressWarnings("unused")
+	        @SuppressWarnings("unused")
+			String nomeCliente, cpf, nomeDoProduto;
+	        @SuppressWarnings("unused")
 	        double preco;
-            @SuppressWarnings("unused")
+	        @SuppressWarnings("unused")
 	        int id = 0, quantidade, opt, opt2=0, n=0, tentativas=0;
 
 	        
@@ -46,25 +44,27 @@ public class App {
 	            sc.nextLine();
 	            if(opt == 1){
 	            	try{
-	            		int c = 1;
-	            		while(c==1 && tentativas < 5) {
+
+
 	            			System.out.println("Usuário: ");
 			                String usuario = sc.nextLine();
 			                System.out.println("Senha: ");
 			                String senha = sc.nextLine();  
 			                if(usuario.equals("admin") && senha.equals("1234")){
 			                    n = 1;
-			                    c += 1;
+
 			                }
 			                else {
 			                	tentativas += 1;
-			                	System.out.println("Dados invalidos");
-
+			                	throw new LoginErradoException(usuario, senha);
 			                }
-	            		}
+	        
 		                
 	            	}catch(java.util.InputMismatchException IME) {
 	            		System.out.println("Por favor, informe os dados novamete!");
+	            	}catch(LoginErradoException e){
+	            		e.toString();
+	            		e.printStackTrace();
 	            	}
 	            }
 
@@ -229,17 +229,30 @@ public class App {
 	                                break;
 	                            case 7:
 	                                // Atualizar estoque de algum produto
-	                                System.out.println("Informe o produto: ");
-	                                String nomepd3 = sc.nextLine();
-	                                for(int i=0;i<produtos.size();i++){
-	                                    if(produtos.get(i).getNomeDoProduto().equals(nomepd3)){
-	                                        System.out.println("Informe a nova quantidade a ser somada com a anterior:");
-	                                        int nQuant = sc.nextInt();
-	                                        sc.nextLine();
-	                                        ((Produtos) produtos.get(i)).setQuantidade(produtos.get(i).getQuantidade()+ nQuant);
-	                                    }
-	                                }
-	                                break;
+									try{
+										System.out.println("Informe o produto: ");
+										String nomepd3 = sc.nextLine();
+										int t = 0;
+										if(t==0){
+											for(int i=0;i<produtos.size();i++){
+												if(((Produtos)produtos.get(i)).getNomeDoProduto().equals(nomepd3)){
+													System.out.println("Informe a nova quantidade a ser somada com a anterior:");
+													int nQuant = sc.nextInt();
+													sc.nextLine();
+													((Produtos) produtos.get(i)).setQuantidade(produtos.get(i).getQuantidade()+ nQuant);
+													t+=1;
+												}
+												else{
+											throw new ProdutoNaoExisteExcption();
+												}
+											}
+										}
+
+									}catch(ProdutoNaoExisteExcption pdne){
+										pdne.toString();
+										pdne.printStackTrace();
+									}
+									break; 
 	                        }
 	                    }
 	                    else
